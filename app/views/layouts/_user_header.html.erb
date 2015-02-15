@@ -1,0 +1,44 @@
+<ul class="nav nav-pills navbar-right top12">
+  <% if user_signed_in? %>
+    <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    </li>
+  <% else %>
+    <li class= <%= "active" if request.env["PATH_INFO"] == "/users/sign_in"%> ><%= link_to "Sign in", new_user_session_path %>
+    </li>
+
+    <li class= <%= "active" if request.env["PATH_INFO"] == "/users/sign_up"%> >
+    <%#= link_to "Sign up", new_user_registration_path %>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Sign Up </button>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= render "devise/registrations/new" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
